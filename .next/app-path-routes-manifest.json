@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/robots.txt/route": "/robots.txt",
+  "/api/revalidate/route": "/api/revalidate",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/catalogo/page": "/catalogo",
+  "/combos/page": "/combos",
+  "/catalogo/[slug]/page": "/catalogo/[slug]",
+  "/combos/[slug]/page": "/combos/[slug]",
+  "/page": "/"
+}

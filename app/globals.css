@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; overflow-x: clip; -webkit-text-size-adjust: 100%; }
+  img, svg, video { max-width: 100%; height: auto; }
+  h1, h2, h3, p, li, dd, dt { overflow-wrap: anywhere; }
+  input, textarea, select, button { font: inherit; }
+  body { @apply bg-white text-lana-900 antialiased; }
+  h1, h2, h3 { @apply font-sans font-medium text-lana-900; }
+  a:focus-visible, button:focus-visible { @apply outline outline-2 outline-offset-2 outline-lana-600; }
+}
+
+@layer components {
+  .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-6 py-3 text-center text-base font-medium transition-colors; }
+  .btn-primario { @apply bg-lana-700 text-lana-50 hover:bg-lana-800; }
+  .btn-suave { @apply border border-lana-300 bg-lana-50 text-lana-800 hover:bg-lana-200; }
+  .tarjeta { @apply overflow-hidden rounded-2xl border border-lana-300 bg-lana-50 shadow-sm; }
+}
+
+/* Sin barra de desplazamiento visible (el scroll sigue funcionando) */
+html { scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; }
