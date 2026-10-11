@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/catalogo/layout,_N_T_/catalogo/[slug]/layout,_N_T_/catalogo/[slug]/page,_N_T_/catalogo/surtido-corazon,catalogo"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/b01d56da632c5cb30adf689480b69e7ac6abc7008f126ca634c499bb6ec05773/$/catalogo/surtido-corazon",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/catalogo/[slug]/page"
+    },
+    "isFallback": false
+  }
+}
