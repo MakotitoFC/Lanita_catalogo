@@ -1,0 +1,60 @@
+{
+  "expo": {
+    "name": "Lanita Admin",
+    "slug": "lanita-admin",
+    "scheme": "lanita",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#ffffff",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "Lanita usa la cámara para fotografiar productos, combos y comprobantes.",
+          "photosPermission": "Lanita accede a tus fotos solo para adjuntar imágenes de productos o comprobantes."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#74784a"
+        }
+      ]
+    ],
+    "android": {
+      "package": "com.lanita.admin",
+      "allowBackup": false,
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ],
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.lanita.admin",
+      "supportsTablet": false
+    },
+    "experiments": {
+      "typedRoutes": false
+    },
+    "extra": {
+      "eas": {
+        "projectId": "REEMPLAZAR-CON-TU-PROJECT-ID-DE-EAS"
+      }
+    },
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    }
+  }
+}
