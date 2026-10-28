@@ -69,7 +69,7 @@ export default async function ProductoPage({ params }: { params: Promise<{ slug:
           </dl>
 
           <div className="mt-6 max-w-sm">
-            <BotonAgregar id={p.id} nombre={p.nombre} precio={p.precio} ruta={`/catalogo/${p.slug}`} etiqueta="Agregar a mi consulta" className="w-full" />
+            <BotonAgregar id={p.id} nombre={p.nombre} precio={p.precio} ruta={`/catalogo/${p.slug}`} etiqueta="Agregar a mi pedido" className="w-full" />
           </div>
         </div>
       </div>

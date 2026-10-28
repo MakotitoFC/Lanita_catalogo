@@ -1,6 +1,6 @@
 'use client';
 
-import { Plus, ShoppingBag } from 'lucide-react';
+import { Check, Plus } from 'lucide-react';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 export type ItemLista = { id: string; nombre: string; precio: number; ruta: string; cantidad: number };
@@ -87,11 +87,13 @@ export function BotonAgregar({ id, nombre, precio, ruta, className = '', etiquet
 
 /** Botón redondo (solo icono) para agregar a la consulta desde la foto de la tarjeta. */
 export function BotonIconoAgregar({ id, nombre, precio, ruta }: { id: string; nombre: string; precio: number; ruta: string }) {
-  const { agregar } = useLista();
+  const { agregar, items } = useLista();
+  const enLista = items.some((i) => i.id === id);
   return (
-    <button type="button" onClick={() => agregar({ id, nombre, precio, ruta })} aria-label={`Agregar ${nombre} a mi consulta`} title="Agregar a mi consulta"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-lana-900 shadow-sm transition hover:bg-white">
-      <ShoppingBag className="h-4 w-4" aria-hidden="true" />
+    <button type="button" onClick={() => agregar({ id, nombre, precio, ruta })}
+            aria-label={enLista ? `${nombre} está en tu pedido; agregar otra unidad` : `Agregar ${nombre} a mi pedido`} title={enLista ? 'En tu pedido ✓' : 'Agregar a mi pedido'}
+            className={`flex h-10 w-10 items-center justify-center rounded-full shadow-sm transition ${enLista ? 'bg-lana-700 text-lana-50 hover:bg-lana-800' : 'bg-white/95 text-lana-900 hover:bg-white'}`}>
+      {enLista ? <Check className="h-4 w-4" aria-hidden="true" /> : <Plus className="h-4 w-4" aria-hidden="true" />}
     </button>
   );
 }

@@ -83,7 +83,7 @@ export default async function ComboPage({ params }: { params: Promise<{ slug: st
           )}
 
           <div className="mt-6 max-w-sm">
-            <BotonAgregar id={combo.id} nombre={combo.nombre} precio={combo.precio} ruta={`/combos/${combo.slug}`} etiqueta="Agregar a mi consulta" className="w-full" />
+            <BotonAgregar id={combo.id} nombre={combo.nombre} precio={combo.precio} ruta={`/combos/${combo.slug}`} etiqueta="Agregar a mi pedido" className="w-full" />
           </div>
         </div>
       </div>

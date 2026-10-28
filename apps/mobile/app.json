@@ -36,7 +36,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "ios": {
       "bundleIdentifier": "com.lanita.admin",
@@ -45,16 +48,20 @@
     "experiments": {
       "typedRoutes": false
     },
-    "extra": {
-      "eas": {
-        "projectId": "REEMPLAZAR-CON-TU-PROJECT-ID-DE-EAS"
-      }
-    },
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "62139007-9c42-4ea0-9d0c-43ae0bb43554"
+      }
+    },
+    "owner": "adamdkjbkje"
   }
 }

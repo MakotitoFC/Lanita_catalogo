@@ -80,7 +80,7 @@ export type ConfigWhatsApp = {
 export type EntidadWhatsApp =
   | { tipo: 'producto' | 'combo'; nombre: string; precio?: number; url?: string }
   // Consulta armada por el visitante en la web: se envía completa en un solo mensaje al negocio.
-  | { tipo: 'lista'; items: { nombre: string; cantidad: number; precio?: number; url?: string }[]; nota?: string; cliente?: string }
+  | { tipo: 'lista'; items: { nombre: string; cantidad: number; precio?: number; url?: string }[]; nota?: string; cliente?: string; fecha?: string }
   | {
       tipo: 'pedido';
       numero: number | string;
@@ -152,16 +152,32 @@ export function generarMensajeWhatsApp(entidad: EntidadWhatsApp, config: ConfigW
   } else if (entidad.tipo === 'lista') {
     const conPrecio = entidad.items.length > 0 && entidad.items.every((i) => i.precio != null);
     const total = entidad.items.reduce((acc, i) => acc + (i.precio ?? 0) * i.cantidad, 0);
+    const linea = '--------------------------------';
+    const monto = (n: number) => `${s} ${n.toFixed(2)}`;
     texto = [
-      '🛍️ *Consulta de productos*',
-      entidad.cliente ? `Hola, soy *${entidad.cliente}* 👋 Quisiera consultar por:` : 'Hola 👋 Quisiera consultar por:',
+      `🚀 *NUEVO PEDIDO — ${negocio}* 🚀`,
+      linea,
+      ...(entidad.fecha ? [`📅 ${entidad.fecha}`, ''] : []),
+      '👤 *CLIENTE*',
+      `*Nombre:* ${entidad.cliente ?? 'No indicado'}`,
       '',
-      ...entidad.items.flatMap((i) => [
-        `📌 *${i.cantidad} × ${i.nombre}*${i.precio != null ? ` · ${money(i.precio)} c/u` : ''}`,
-        ...(i.url ? [`🔗 ${i.url}`] : []),
-      ]),
-      ...(conPrecio ? ['', `💰 *Total estimado: ${money(total)}*`] : []),
-      ...(entidad.nota ? ['', `💬 ${entidad.nota}`] : []),
+      ...(entidad.items.length > 0
+        ? [
+            '🛒 *DETALLE*',
+            linea,
+            ...entidad.items.flatMap((i) => [
+              `🔸 *${i.cantidad}x ${i.nombre}*`,
+              ...(i.url ? [`   └ 🔗 ${i.url}`] : []),
+              ...(i.precio != null ? [`   💵 ${monto(i.precio * i.cantidad)}`] : []),
+              '',
+            ]),
+            linea,
+          ]
+        : []),
+      ...(conPrecio ? ['💵 *IMPORTE*', '', `🔥 *TOTAL ESTIMADO: ${monto(total)}* 🔥`, linea] : []),
+      ...(entidad.nota ? ['💬 *NOTA*', entidad.nota, linea] : []),
+      '💳 Pago: por coordinar contigo',
+      '🙌 ¡Quedo atenta a tu confirmación de disponibilidad!',
     ].join('\n');
     destino = normalizarNumero(config.whatsapp_numero);
   } else {

@@ -2,7 +2,15 @@
   "cli": { "version": ">= 12.0.0", "appVersionSource": "remote" },
   "build": {
     "development": { "developmentClient": true, "distribution": "internal", "android": { "buildType": "apk" } },
-    "preview": { "distribution": "internal", "android": { "buildType": "apk" } },
+    "preview": {
+  "distribution": "internal",
+  "android": { "buildType": "apk" },
+  "env": {
+    "EXPO_PUBLIC_SUPABASE_URL": "https://vzouwaqkeidwqdvjqdly.supabase.co",
+    "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ6b3V3YXFrZWlkd3FkdmpxZGx5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE2MDQ3MjEsImV4cCI6MjEwNzE4MDcyMX0.CCJOoegsmfV64BlkG3dzAemEH9ffLdbAtko5HF39lDM",
+    "EXPO_PUBLIC_WEB_URL": "https://lanita-catalogo.vercel.app"
+  }
+},
     "production": { "autoIncrement": true, "android": { "buildType": "app-bundle" } }
   },
   "submit": { "production": {} }

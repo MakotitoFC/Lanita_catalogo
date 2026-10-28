@@ -68,11 +68,12 @@ describe('whatsapp', () => {
       cfg,
     );
     expect(url).toMatch(/^https:\/\/wa\.me\/51999888777\?text=/);
-    expect(texto).toContain('🛍️ *Consulta de productos*');
-    expect(texto).toContain('Hola, soy *Ana*');
-    expect(texto).toContain('📌 *2 × Maceta luna* · S/25.00 c/u');
+    expect(texto).toContain('*NUEVO PEDIDO');
+    expect(texto).toContain('*Nombre:* Ana');
+    expect(texto).toContain('🔸 *2x Maceta luna*');
+    expect(texto).toContain('💵 S/ 50.00');
     expect(texto).toContain('🔗 https://x.com/catalogo/maceta-luna');
-    expect(texto).toContain('💰 *Total estimado: S/130.00*');
+    expect(texto).toContain('*TOTAL ESTIMADO: S/ 130.00*');
   });
   it('pedido para el cliente incluye Yape, titular y punto de encuentro', () => {
     const { texto, url } = generarMensajeWhatsApp(

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { createContext, useCallback, useContext, useEffect, useId, useMemo, useRef, useState } from 'react';
-import { CalendarDays, MessageCircle, ShoppingBag, X } from 'lucide-react';
+import { CalendarDays, MessageCircle, Plus, X } from 'lucide-react';
 import { vigencia } from '@/lib/fechas';
 import type { Categoria, ItemCatalogo, Promocion } from '@/lib/data';
 import { useLista } from './lista';
@@ -276,7 +276,7 @@ function ModalDetalle({ c, simbolo, onCerrado }: { c: Contenido; simbolo: string
               <div className="mt-6 space-y-1">
                 <button type="button" onClick={accionPrincipal} className="btn btn-primario w-full gap-2">
                   {c.accion.tipo === 'agregar'
-                    ? <><ShoppingBag className="h-4 w-4" aria-hidden="true" /> Agregar a mi consulta</>
+                    ? <><Plus className="h-4 w-4" aria-hidden="true" /> Agregar a mi pedido</>
                     : <><MessageCircle className="h-4 w-4" aria-hidden="true" /> Consultar por esta oferta</>}
                 </button>
               </div>
